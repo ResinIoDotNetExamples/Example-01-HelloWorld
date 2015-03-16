@@ -53,7 +53,7 @@ dashboard.
 1. You can now clone the HelloWorld repo:
 
 ```sh
-$ git clone https://github.com/nghiant2710/hello.NET.git
+$ git clone https://github.com/ResinIoDotNetExamples/Example-01-HelloWorld.git
 ```
 
 Then add the resin remote. You can find an example of this command and 
