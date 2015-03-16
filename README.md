@@ -83,7 +83,7 @@ deployment repo. You can run monodevelop on any platform (Windows, Mac,
 Linux) - it does not have to be run on a Raspberry Pi. For this sample, 
 I worked from a PC running X86-64 Debian.
 1. Create a new project. You should create a 'Console' project. The 
-default command-line project is a hello world program, so we don't have
+default console project template is a hello world program, so we don't have
 to edit any code.
 1. We do have to change some options though. Firstly, right-click on the
 solution (not the project, but the top-level solution) and select 'options'.
