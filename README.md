@@ -104,6 +104,10 @@ output options (or post-compile Custom Commands) is how you can keep your
 source and deployment projects separate.
 ![](README.images/outputconfig.png)
 1. Close the options by clicking OK
+1. Select Project->Active Configuration and choose the 'Debug' configuration.
+(That should be 'Debug' without any processor/platform specification. We
+need to be sure we create a platform agnostic binary using the Any CPU configuration
+that we just created)
 1. Build the project
 1. Commit your changes (including the newly created .exe file - make sure
 your .gitignore does not exclude .exe files!)
