@@ -35,10 +35,6 @@ compile is beyond the scope of this example.
 
 ## Resin.io Setup
 
-You can run the unaltered example code just to see it run on your device.
-To do so, follow these steps...  Below, we will walk through creating a new
-.net Hello World project from scratch.
-
 1. If you haven't got a [Resin.io](http://resin.io) account, visit
 [resin.io](http://resin.io) and sign up.
 1. Start a new applicaton on [Resin.io](http://resin.io) and follow the
@@ -50,13 +46,17 @@ dashboard.
 
 ## Running the example code
 
-1. You can now clone the HelloWorld repo:
+You can deploy the unaltered example code just to see it run on your device.
+To do so, follow these steps...  Below, we will walk through creating a new
+.net Hello World project from scratch.
+
+1. Clone the HelloWorld repo:
 
 ```sh
 $ git clone https://github.com/ResinIoDotNetExamples/Example-01-HelloWorld.git
 ```
 
-Then add the resin remote. You can find an example of this command and 
+Add the resin remote. You can find an example of this command and 
 and a copyable link with your username and application name by clicking
 on your application on the resin.io dashboard. The information you need
 is at the top right next to the Need Help? button:
