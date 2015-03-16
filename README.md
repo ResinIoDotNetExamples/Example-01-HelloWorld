@@ -77,12 +77,12 @@ the deployment process, you should see a simple "Hello World!" in the logs.
 
 1. Run monodevelop and create a new project. For simplicity, I created
 my project right in the deployment repository, but that's only because it
-makes it easier to package the sample. In practice, you will want a separate
+makes it easier to package this as a sample. In practice, you will want a separate
 git repo for your source code, and then just copy the binaries into your
 deployment repo. You can run monodevelop on any platform (Windows, Mac, 
 Linux) - it does not have to be run on a Raspberry Pi. For this sample, 
-I worked from a PC running Debian.
-1. Create a new project. You should create a command-line project. The 
+I worked from a PC running X86-64 Debian.
+1. Create a new project. You should create a 'Console' project. The 
 default command-line project is a hello world program, so we don't have
 to edit any code.
 1. We do have to change some options though. Firstly, right-click on the
@@ -114,7 +114,7 @@ your .gitignore does not exclude .exe files!)
 
 * Your .net programs must either be developed on the same platform (a 
 Raspberry Pi or Pi 2) or developed with a platform target of "Any CPU"
-which generates platform-agnostic code. This is always my preferred option
+which will generate platform-agnostic code. This is always my preferred option
 so that I do not need separate binary images for every target platform.
 The only time you cannot use Any CPU is when you are using PInvoke to call
 external native-code libraries with platform-dependent calling conventions.
@@ -134,7 +134,10 @@ The main reasons for this sort of thing happening are:
 either didn't copy what you thought it did, or your CMD command is referencing
 the wrong location. It can be hard to determine which is the real issue without
 being able to view the application in the terminal.
-* Your .exe won't launch because of a missing library or assembly
+* Your .exe won't launch because of a missing library or assembly. That 
+could mean that you need to update your Dockerfile to include more mono
+packages, or it could mean that
+you did not include all the needed assemblies in your deployment project.
 * Your .exe launches, but an uncaught exception causes the exe to exit before
 you can attach a terminal session.
 
