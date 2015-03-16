@@ -35,6 +35,10 @@ compile is beyond the scope of this example.
 
 ## Resin.io Setup
 
+You can run the unaltered example code just to see it run on your device.
+To do so, follow these steps...  Below, we will walk through creating a new
+.net Hello World project from scratch.
+
 1. If you haven't got a [Resin.io](http://resin.io) account, visit
 [resin.io](http://resin.io) and sign up.
 1. Start a new applicaton on [Resin.io](http://resin.io) and follow the
