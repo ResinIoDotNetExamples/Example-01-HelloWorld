@@ -4,6 +4,6 @@ MAINTAINER martin@prometheusengineering.net
 RUN apt-get update
 RUN apt-get install -y libmono2.0-cil mono-runtime
 
-ADD layout/* /app
+ADD layout/* /app/hello/
 
-CMD ["mono", "HelloWorld.exe"]
+CMD ["mono", "/app/hello/HelloWorld.exe"]
