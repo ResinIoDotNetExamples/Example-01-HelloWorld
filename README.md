@@ -87,6 +87,24 @@ solution (not the project, but the top-level solution) and select 'options'.
 1. Click on 'Copy' and enter the name 'Debug' and select a platform of 'Any CPU'
 It should look like this:
 ![](README.images/copyconfig.png)
+1. Do the same for 'Release'. That is, copy Release|XXXX and create a Release
+for the Any CPU platform.
+1. Click OK to close the options dialog
+1. Right click on the project node and select options again. This time, click
+'Output'.
+1. Change the Configuration to "All Configurations" and the Platform to "Any
+CPU" and set the output path to the directory that you want your output written
+into. In my case, I created a 'layout' directory. Note that this is the same
+directory that is mentioned in the ADD command in your Dockerfile. Using the
+output options (or post-compile Custom Commands) is how you can keep your
+source and deployment projects separate.
+![](README.images/outputconfig.png)
+1. Close the options by clicking OK
+1. Build the project
+1. Commit your changes (including the newly created .exe file - make sure
+your .gitignore does not exclude .exe files!)
+1. git push resin master
+1. Unicorns and "Hello World!" as described above.
 
 ## Key Points
 
@@ -100,3 +118,43 @@ external native-code libraries with platform-dependent calling conventions.
 more or different packages. This is covered in Example 2.
 
 ## Diagnostics
+
+If your .net program fails to launch or if it exits quickly and unexpectedly,
+you cannot use the resin.io terminal to diagnose the problem. The terminal
+only works when your application is running and if the application won't start
+then you are kind of stuck.
+
+The main reasons for this sort of thing happening are:
+
+* A bad path to your executable in your CMD. For instance, the ADD command
+either didn't copy what you thought it did, or your CMD command is referencing
+the wrong location. It can be hard to determine which is the real issue without
+being able to view the application in the terminal.
+* Your .exe won't launch because of a missing library or assembly
+* Your .exe launches, but an uncaught exception causes the exe to exit before
+you can attach a terminal session.
+
+One way to ensure that you can attach a resin.io terminal session and poke
+around is to comment out this line in your Dockerfile:
+
+```Dockerfile
+CMD ["mono", "/app/hello/HelloWorld.exe"]
+```
+
+and add this line:
+
+```Dockerfile
+CMD ["bash"]
+```
+
+This will ensure that when you re-deploy your project that 
+something is running and you can use the resin.io
+terminal to inspect the deployed environment (did everything end up
+where you thought it would?) and try to run your program from the command line
+and get more diagnostic information if/when it fails.
+An alternative is to start a script from the CMD directive and have the script
+drop into bash if your program fails to launch. You can use the script as
+a failsafe too, to restart your app if it ever exits unexpectedly, or
+use the script to launch a parallel watchdog process. We will be using
+scripts in later examples to give us access to hardware devices and do
+other useful things.
